@@ -2,11 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 
+
 Route::get('/', function () {
-    return view('welcome');
+    return response()->json([
+        'status' => 'ok',
+        'message' => 'Laravel is running!'
+    ]);
 });
-
-
 
 Route::get('/check-env', function () {
     return response()->json([
@@ -21,3 +23,11 @@ Route::get('/check-env', function () {
         'db_password' => env('DB_PASSWORD'),
     ]);
 });
+
+Route::get('/check-files', function() {
+    return [
+        'index_exists' => file_exists(public_path('index.php')),
+        'htaccess_exists' => file_exists(public_path('.htaccess'))
+    ];
+});
+
