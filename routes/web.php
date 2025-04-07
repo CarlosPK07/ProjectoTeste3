@@ -7,7 +7,6 @@ Route::get('/', function () {
 });
 
 
-use Illuminate\Support\Facades\Route;
 
 Route::get('/check-env', function () {
     return response()->json([
