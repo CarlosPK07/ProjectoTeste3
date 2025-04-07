@@ -17,19 +17,7 @@ return [
     | the channels present in the list of "channels" configured below.
     |
     */
-'default' => 'stderr',
-    'channels' => [
-        'stderr' => [
-            'driver' => 'monolog',
-            'handler' => \Monolog\Handler\ErrorLogHandler::class,
-            'formatter' => env('LOG_STDERR_FORMATTER'),
-            'with' => [
-                'stream' => 'php://stderr',
-            ],
-        ],
-    ],
 
-/*
     'default' => env('LOG_CHANNEL', 'stack'),
 
     /*
