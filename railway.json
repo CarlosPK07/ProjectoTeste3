@@ -1,1 +1,8 @@
-
+{
+  "build": {
+    "builder": "nixpacks",
+    "config": {
+      "startCommand": "nginx -c .nginx.conf && php-fpm"
+    }
+  }
+}
