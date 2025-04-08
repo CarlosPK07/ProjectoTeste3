@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\DB;
 
 Route::get('/', function () {
     return response()->json([
@@ -31,3 +31,20 @@ Route::get('/check-files', function() {
     ];
 });
 
+
+Route::get('/check-env', function () {
+    try {
+        DB::connection()->getPdo();
+        return response()->json([
+            'DB_HOST' => env('DB_HOST'),
+            'DB_DATABASE' => env('DB_DATABASE'),
+            'DB_USERNAME' => env('DB_USERNAME'),
+            'DB_CONNECTION' => env('DB_CONNECTION'),
+            'status' => 'Conexão com BD bem-sucedida! 🎉'
+        ]);
+    } catch (\Exception $e) {
+        return response()->json([
+            'error' => $e->getMessage()
+        ], 500);
+    }
+});
