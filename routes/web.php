@@ -9,7 +9,7 @@ Route::get('/', function () {
         'message' => 'Laravel is running!'
     ]);
 });
-
+/*
 Route::get('/check-env', function () {
     return response()->json([
         'env' => env('APP_ENV'),
@@ -30,8 +30,8 @@ Route::get('/check-files', function() {
         'htaccess_exists' => file_exists(public_path('.htaccess'))
     ];
 });
-
-
+*/
+/*
 Route::get('/check-env', function () {
     try {
         DB::connection()->getPdo();
@@ -48,6 +48,16 @@ Route::get('/check-env', function () {
         ], 500);
     }
 });
+*/
+Route::get('/check-env', function () {
+    return response()->json([
+        'DB_HOST' => env('DB_HOST'),
+        'DB_USERNAME' => env('DB_USERNAME'),
+        'DB_PASSWORD' => env('DB_PASSWORD'),
+        'APP_ENV' => env('APP_ENV'),
+    ]);
+});
+
 
 // TESTE DE LOGS/PERMISSÕES (REMOVA DEPOIS DE TESTAR)
 Route::get('/test', function() {
