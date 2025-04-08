@@ -48,3 +48,13 @@ Route::get('/check-env', function () {
         ], 500);
     }
 });
+
+// TESTE DE LOGS/PERMISSÕES (REMOVA DEPOIS DE TESTAR)
+Route::get('/test', function() {
+    error_log('TESTANDO LOGS - MENSAGEM VISÍVEL NO PAINEL RAILWAY');
+    return response()->json([
+        'status' => 'ok',
+        'message' => 'Rota de teste funcionando',
+        'hora' => now()
+    ]);
+});
